@@ -42,7 +42,7 @@ var addressBook = new Array();
  * @param {*} email     - email
  
  */
-function contactDetails(firstName, lastName, address, city, state, zip, phoneNumber, email){
+function contactDetails(firstName, lastName, address, city, state, zip, phoneNumber, email) {
 
     //Ability to check Duplicate Contact
     addressBook.filter(contact => contact.firstName == firstName)
@@ -123,15 +123,61 @@ function contactDetails(firstName, lastName, address, city, state, zip, phoneNum
     }
 }
 
+/**
+ * Edit contact in address book
+ * @param {*} findName 
+ * @param {*} editedVariable 
+ * @param {*} newValue 
+ */
+function editContact(findName, editedVariable, newValue) {
+    if (addressBook.length == null) {
+        console.log("Add Contact In Address Book");
+    } else {
+        addressBook.forEach(newContact => {
+            if (newContact.firstName == findName) {
+                switch (editedVariable) {
+                    case "firstName":
+                        newContact.firstName = newValue;
+                        break;
+                    case "lastName":
+                        newContact.lastName = newValue;
+                        break;
+                    case "address":
+                        newContact.address = newValue;
+                        break;
+                    case "state":
+                        newContact.state = newValue;
+                        break;
+                    case "city":
+                        newContact.city = newValue;
+                        break;
+                    case "zipCode":
+                        newContact.zipCode = newValue;
+                        break;
+                    case "firstName":
+                        newContact.firstName = newValue;
+                        break;
+                    case "lastName":
+                        newContact.lastName = newValue;
+                        break;
+                }
+            }
+        })
+    }
+}
 function selectFunction(select) {
     switch (select) {
         case "contactDetails":
-
             // Calling Contact Details Fucntion
-
             contactDetails("Deven", "Mali", "OmNagar", "Dhule", "Maharastra", "424005", "9405828376", "deven@gmail.com");
-           
+            break;
+        case "editContact":
+            //Calling Edit Contact Function
+            editContact("ChandraKant", "city", "Bokaro");
+            console.log(addressBook);
+            break;
     }
 }
 
 selectFunction("contactDetails");
+selectFunction("editContact");
