@@ -204,6 +204,26 @@ function searchByCity_State(choice, name) {
     }
 }
 
+
+/**
+ * View contact by state or city
+ * @param {*} choice - city or state
+ * @param {*} name  - name of city or state
+ */
+function viewByCity_State(choice, name) {
+    if (choice == "city") {
+        person = addressBook.filter(contact => contact.city == name)
+        console.log("Contact is from city" + name);
+        console.log(person);
+    } else if (choice == "state") {
+        person = addressBook.filter(contact => contact.state == name)
+        console.log("Contact from state " + name);
+        console.log(person);
+    } else {
+        console.log("please insert correct city or state Name");
+    }
+}
+
 function selectFunction(select) {
     switch (select) {
         case "contactDetails":
@@ -224,10 +244,15 @@ function selectFunction(select) {
             //Calling Search Function To Search Contact in Address Book
             searchByCity_State("state", "mahareastra");
             break;
+        case "viewByCity_State":
+            //Calling View By State or City Function
+            viewByCityOrState("state", "Jharkhand");
+            break;
     }
 }
 
 selectFunction("contactDetails");
 selectFunction("editContact");
 selectFunction("deleteContact");
-selectFunction("searchByCity_State")
+selectFunction("searchByCity_State");
+selectFunction("viewByCity_State");
