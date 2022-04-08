@@ -151,8 +151,8 @@ function editContact(findName, editedVariable, newValue) {
                     case "city":
                         newContact.city = newValue;
                         break;
-                    case "zipCode":
-                        newContact.zipCode = newValue;
+                    case "zip":
+                        newContact.zip = newValue;
                         break;
                     case "firstName":
                         newContact.firstName = newValue;
@@ -165,6 +165,25 @@ function editContact(findName, editedVariable, newValue) {
         })
     }
 }
+
+/**
+ * Method to delete contact in address book
+ * @param {*} first_Name 
+ */
+function deleteContact(first_Name) {
+    if (addressBook.length == null) {
+        console.log("Add Contact In Address Book");
+    } else {
+        for (let i = 0; i < addressBook.length; i++) {
+            if (addressBook[i].firstName == first_Name) {
+                addressBook.splice(i, 1);
+                console.log("Contact Deleted Successfully");
+            }
+        }
+    }
+}
+
+
 function selectFunction(select) {
     switch (select) {
         case "contactDetails":
@@ -176,8 +195,14 @@ function selectFunction(select) {
             editContact("Devendra", "city", "Pune");
             console.log(addressBook);
             break;
+        case "deleteContact":
+            //Calling Delete Contact Function
+            deleteContact("Deven");
+            console.log(addressBook);
+            break;
     }
 }
 
 selectFunction("contactDetails");
 selectFunction("editContact");
+selectFunction("deleteContact");
