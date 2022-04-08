@@ -204,7 +204,6 @@ function searchByCity_State(choice, name) {
     }
 }
 
-
 /**
  * View contact by state or city
  * @param {*} choice - city or state
@@ -219,6 +218,26 @@ function viewByCity_State(choice, name) {
         person = addressBook.filter(contact => contact.state == name)
         console.log("Contact from state " + name);
         console.log(person);
+    } else {
+        console.log("please insert correct city or state Name");
+    }
+}
+
+/**
+ * 
+* Count contact by state or city
+ * @param {*} choice - city or state
+ * @param {*} name  - name of city or state
+ */
+function countContactInCity_State(choice, name) {
+    if (choice == "city") {
+        person = addressBook.filter(contact => contact.city == name)
+            .reduce(() => { count++; }, count = 0);
+        console.log("Number of contact found from city " + name + " Are " + count);
+    } else if (choice == "state") {
+        person = addressBook.filter(contact => contact.state == name)
+            .reduce(() => { count++; }, count = 0);
+        console.log("Number of contact found  from state" + name + " Are " + count);
     } else {
         console.log("please insert correct city or state Name");
     }
@@ -248,6 +267,11 @@ function selectFunction(select) {
             //Calling View By State or City Function
             viewByCity_State("state", "Jharkhand");
             break;
+        case "countContactInCity_State":
+            //Calling Count by City And State Function
+            countContactInCity_State("state", "maharastra");
+            countContactInCity_State("city", "Dhule");
+            break;
     }
 }
 
@@ -256,3 +280,4 @@ selectFunction("editContact");
 selectFunction("deleteContact");
 selectFunction("searchByCity_State");
 selectFunction("viewByCity_State");
+selectFunction("countContactInCity_State");
