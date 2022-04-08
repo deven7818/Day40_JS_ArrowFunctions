@@ -183,6 +183,26 @@ function deleteContact(first_Name) {
     }
 }
 
+/**
+ * Serach contact by City or state
+ * @param {*} choice - city or state
+ * @param {*} name  - name of city or state
+ */
+function searchByCity_State(choice, name) {
+    if (choice == "city") {
+        person = addressBook.filter(contact => contact.city == name)
+            .map(contact => contact.firstName);
+        console.log("Contact is from city" + name);
+        console.log(person);
+    } else if (choice == "state") {
+        person = addressBook.filter(contact => contact.state == name)
+            .map(contact => contact.firstName);
+        console.log("Contact from state " + name);
+        console.log(person);
+    } else {
+        console.log("please insert correct city or state Name");
+    }
+}
 
 function selectFunction(select) {
     switch (select) {
@@ -200,9 +220,14 @@ function selectFunction(select) {
             deleteContact("Deven");
             console.log(addressBook);
             break;
+        case "searchByCity_State":
+            //Calling Search Function To Search Contact in Address Book
+            searchByCity_State("state", "mahareastra");
+            break;
     }
 }
 
 selectFunction("contactDetails");
 selectFunction("editContact");
 selectFunction("deleteContact");
+selectFunction("searchByCity_State")
