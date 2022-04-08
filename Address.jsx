@@ -246,7 +246,7 @@ function selectFunction(select) {
             break;
         case "viewByCity_State":
             //Calling View By State or City Function
-            viewByCityOrState("state", "Jharkhand");
+            viewByCity_State("state", "Jharkhand");
             break;
     }
 }
