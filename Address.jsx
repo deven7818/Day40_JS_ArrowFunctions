@@ -173,7 +173,7 @@ function selectFunction(select) {
             break;
         case "editContact":
             //Calling Edit Contact Function
-            editContact("ChandraKant", "city", "Bokaro");
+            editContact("Devendra", "city", "Pune");
             console.log(addressBook);
             break;
     }
